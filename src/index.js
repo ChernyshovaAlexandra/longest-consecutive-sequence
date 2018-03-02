@@ -16,7 +16,7 @@ module.exports = function longestConsecutiveLength(array) {
     min = cur - 1;
     if(massOfNumbers.includes(cur)){
       if(massOfNumbers.includes(min) && min > 0){
-        count+=1;
+        count+=2;
         massOfNumbers.splice(massOfNumbers.indexOf(max), 1);
       } else {
         count+=2;
@@ -32,8 +32,7 @@ module.exports = function longestConsecutiveLength(array) {
   } while(massOfNumbers.length > 0)
 
  counter.sort(function(a,b){return a - b;});
-
-  return counter[counter.length - 1];
+ return counter[counter.length - 1];
 }
 
  
