@@ -1,5 +1,5 @@
 module.exports = function longestConsecutiveLength(array) {
-  let massOfNumbers = array;
+   let massOfNumbers = array;
   let map = new Map(); 
   let max;
   let count;
@@ -12,7 +12,7 @@ module.exports = function longestConsecutiveLength(array) {
     map.set(massOfNumbers[i], null)
   }
   console.log(map);
-
+ if(massOfNumbers.length > 1){
   for (let [key, value] of map) {
     if (!map.has(key - 1)) {
       count = 0;
@@ -23,6 +23,11 @@ module.exports = function longestConsecutiveLength(array) {
       counter.push(count);
     }
   }
-  getMaxOfArray(counter);
+     getMaxOfArray(counter);
+ } else if(massOfNumbers.length == 1){
+   max = 1;
+ } else if(!massOfNumbers.length){
+   max = 0
+ }
   return max;
 }
