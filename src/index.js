@@ -1,4 +1,4 @@
-function longestConsecutiveLength(array) {
+module.exports = function longestConsecutiveLength(array) {
   let massOfNumbers = array;
   let map = new Map(); 
   let max;
