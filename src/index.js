@@ -11,7 +11,6 @@ module.exports = function longestConsecutiveLength(array) {
   for(let i =0; i < massOfNumbers.length; i++){
     map.set(massOfNumbers[i], null)
   }
-  console.log(map);
  if(massOfNumbers.length > 1){
   for (let [key, value] of map) {
     if (!map.has(key - 1)) {
