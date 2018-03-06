@@ -1,38 +1,28 @@
-module.exports = function longestConsecutiveLength(array) {
- let massOfNumbers = array; 
+function longestConsecutiveLength(array) {
+  let massOfNumbers = array;
+  let map = new Map(); 
   let max;
-  let cur = +max - 1;
-  let count = 0;
-  let min = 0;
+  let count;
   let counter = [];
   //нахождение максимального числа в массиве
   function getMaxOfArray(mass) {
     max = Math.max.apply(null, mass);
-
   }
-  do{
-    getMaxOfArray(massOfNumbers);
-    cur = max - 1;
-    min = cur - 1;
-    if(massOfNumbers.includes(cur)){
-      if(massOfNumbers.includes(min) && min > 0){
-        count+=2;
-        massOfNumbers.splice(massOfNumbers.indexOf(max), 1);
-      } else {
-        count+=2;
-        counter.push(count);
-        count = 0;
-        massOfNumbers.splice(massOfNumbers.indexOf(max), 1);
-        massOfNumbers.splice(massOfNumbers.indexOf(cur), 1);
-      } 
-    }else{
-      massOfNumbers.splice(massOfNumbers.indexOf(max), 1);
+  for(let i =0; i < massOfNumbers.length; i++){
+    map.set(massOfNumbers[i], null)
+  }
+  console.log(map);
+
+  for (let [key, value] of map) {
+    if (!map.has(key - 1)) {
       count = 0;
+      let i = key;
+      do{
+        count+=1;
+      } while (map.has(++i));
+      counter.push(count);
     }
-  } while(massOfNumbers.length > 0)
-
- counter.sort(function(a,b){return a - b;});
- return counter[counter.length - 1];
+  }
+  getMaxOfArray(counter);
+  return max;
 }
-
- 
